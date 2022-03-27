@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d90a336-7a54-4451-93c3-33c532fa809b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/movies/migrations/0002_rename_genre_movie_genres.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movies/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/migrations/0002_ratings_user_rename_image_movie_poster_reviews.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies_site/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies_site/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies_site/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies_site/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies_site/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies_site/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/import_movies.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/import_movies.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +140,7 @@
       <workItem from="1647363949032" duration="11919000" />
       <workItem from="1647971647718" duration="126000" />
       <workItem from="1648073988570" duration="8287000" />
-      <workItem from="1648084006358" duration="9820000" />
+      <workItem from="1648084006358" duration="10824000" />
     </task>
     <servers />
   </component>
@@ -173,7 +161,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/import_movies.py</url>
-          <line>45</line>
+          <line>44</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
