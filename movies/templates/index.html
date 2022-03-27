@@ -1,0 +1,22 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for movie in movies %}
+            <div class="col-md-3">
+             <div class="card">
+{#                <span>{{ movie. }}</span>#}
+                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{movie.poster_url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{movie.title}}</h5>
+{#                <a href="void;;" class="btn btn-primary">Go somewhere</a>#}
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

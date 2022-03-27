@@ -5,20 +5,19 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Movie(models.Model):
-    GENRE_CHOICES = [('AC', 'Action'), ('AD', 'Adventure'), ('AN', 'Animation'), ('BI', 'Biography'), ('CO', 'Comedy'),
-                     ('DO', 'Documentary'), ('DR', 'Drama'), ('FA', 'Family'), ('HI', 'History'), ('HO', 'Horror'),
-                     ('MY', 'Mystery'), ('RO', 'Romance'), ('TH', 'Thriller'), ('WA', 'War')]
-    LANGUAGE_CHOICES = [('EN', 'English'), ('FR', 'French'), ('GE', 'German'), ('RU', 'Russian')]
-    STATUS_CHOICES = [('RA', 'Recently Added'), ('MW', 'Most Watched'), ('TR', 'Top Rated')]
+
     title = models.CharField(max_length=100)
-    storyline = models.TextField()
-    poster = models.ImageField(upload_to='movies')
-    genre = models.CharField(choices=GENRE_CHOICES, max_length=2)
-    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2)
-    status = models.CharField(choices=STATUS_CHOICES, max_length=2)
+    tagline = models.CharField(max_length=200,null=True)
+    overview = models.TextField()
+    poster_url = models.CharField(max_length=100, null=True)
+    language = models.CharField(max_length=20)
+    status = models.CharField(max_length=20)
     director = models.CharField(max_length=100)
-    duration = models.TimeField()
+    duration = models.IntegerField(null=True)
+    budget = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
+    revenue = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     release_date = models.DateField()
+    genres = models.JSONField(null=True)
 
     def __str__(self):
         return self.title
@@ -31,21 +30,20 @@ class User(User):
         return self.username
 
 
-class Ratings(models.Model):
+class Rating(models.Model):
     rating = models.IntegerField()
+    user = models.ForeignKey(User,  on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
     def _str_(self):
         return self.rating
 
 
-class Reviews(models.Model):
+class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     description = models.TextField()
+    review_date = models.DateTimeField()
 
-
-review_date = models.DateTimeField()
-
-
-def _str_(self):
-    return self.review_comments
+    def _str_(self):
+        return self.description
