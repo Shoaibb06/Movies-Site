@@ -1,0 +1,102 @@
+.bg-img {
+    background-image: url(https://wallpapercave.com/wp/wp7172825.jpg) !important;
+    background-size: cover;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background-color: #2e9df7;
+    -webkit-box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.25) inset, 0 -15px 15px -15px rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.25) inset, 0 -15px 15px -15px rgba(0, 0, 0, 0.25) inset
+}
+
+.bg-img-size{
+    width: auto;
+    height: 500px;
+}
+
+.bbbootstrap form {
+    position: relative;
+    width: 540px;
+    margin: 170px auto 0;
+}
+
+
+
+.bbbootstrap form input[type="text"] {
+    padding: 15px 20px;
+    padding-right: 100px;
+    border-color: transparent;
+    border-radius: 4px
+}
+
+
+
+
+.InputBox {
+    display: block;
+    width: 100% !important;
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 22px;
+    border-radius: 4px
+}
+
+.bbbootstrap form input[type="submit"] {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    float: right;
+    padding: 10px 25px
+}
+
+.Button {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+    border: transparent solid 1px;
+    border-radius: 3px;
+    color: #fff;
+    background-image: linear-gradient(#38a2f7, #2498f7)
+}
+
+/**/
+
+.bbootstrap form {
+    position: relative;
+    width: 100px;
+    margin: 0px auto 0;
+}
+
+
+
+.bbootstrap form input[type="text"] {
+    padding-right: 100px;
+    border-color: transparent;
+    border-radius: 4px
+}
+
+
+.b-InputBox {
+    width: 100% !important;
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.bbootstrap form input[type="submit"] {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    float: right;
+}
+
+.small-Button {
+    padding: 3px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+    border: transparent solid 1px;
+    border-radius: 3px;
+    color: #fff;
+    background-image: linear-gradient(#38a2f7, #2498f7)
+}

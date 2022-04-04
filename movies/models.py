@@ -12,12 +12,12 @@ class Movie(models.Model):
     poster_url = models.CharField(max_length=100, null=True)
     language = models.CharField(max_length=20)
     status = models.CharField(max_length=20)
-    director = models.CharField(max_length=100)
     duration = models.IntegerField(null=True)
     budget = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     revenue = models.DecimalField(max_digits=30, decimal_places=2, default=0.0)
     release_date = models.DateField()
     genres = models.JSONField(null=True)
+    video = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.title

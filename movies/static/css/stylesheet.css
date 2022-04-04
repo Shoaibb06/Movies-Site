@@ -1,0 +1,56 @@
+.small {
+    font-size: 15px;
+}
+.large-height {
+    height: 80px;
+}
+
+.card-404 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: .25rem;
+}
+
+.card-404 .card-header {
+    background-color: #fff;
+    border-bottom: none;
+}
+.video-player {
+    width: 150px;
+    height: 100px;
+}
+
+.badge {
+    font-size: 25px;
+    font-weight: 200
+}
+
+.badge i {
+    font-size: 20px;
+    font-weight: 200
+}
+
+.about-rating {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px
+}
+
+.total-ratings {
+    font-size: 12px
+}
+
+.bg-custom {
+    background-color: #b7dd29 !important
+}
+
+.progress {
+    margin-top: 10px
+}
+

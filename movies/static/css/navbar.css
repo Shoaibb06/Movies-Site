@@ -1,0 +1,14 @@
+nav {
+  height:130px;
+}
+.navbar-nav {
+  margin:auto;
+}
+.nav-link {
+  margin:10px 25px;
+  color:#fff;
+}
+.nav-link:hover {
+  color:yellow;
+}
+

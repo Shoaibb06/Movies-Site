@@ -18,5 +18,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('genres', views.genres, name='genres'),
+    path('movie_list/<str:genre>', views.movie_list, name='movie_list'),
+    path('movie_details/<int:movie_id>', views.movie_details, name='movie_details')
 ]
