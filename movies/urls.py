@@ -21,5 +21,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('genres', views.genres, name='genres'),
     path('movie_list/<str:genre>', views.movie_list, name='movie_list'),
-    path('movie_details/<int:movie_id>', views.movie_details, name='movie_details')
+    path('movie_details/<int:movie_id>', views.movie_details, name='movie_details'),
+
+    # payment
+    path('webhooks/stripe/', views.stripe_webhook, name='stripe_webhook'),
+    path('success/', views.success_view, name='success'),
+    path('cancel/', views.CancelView.as_view(), name='cancel'),
+    path('create_checkout_session/', views.CreateCheckoutSessionView.as_view(), name='create_checkout_session'),
 ]

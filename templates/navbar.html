@@ -23,12 +23,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
+                    <li class="nav-item">
+                        <button class="nav-link" type="button"
+                                id="checkout-button">Subscribe
+                        </button>
+                        {% csrf_token %}
+                        {% include 'stripe/stripe_script.html' %}
+                    </li>
                     {% if not page %}
                         <li class="nav-item ms-2">
                             <div class="bbootstrap mt-3">
                                 <form class="w-100">
                                     <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                    <input type="text" id="Form_Search" value="" placeholder="Search for your best result in our community" role="searchbox" class="b-InputBox" autocomplete="off"/>
+                                    <input type="text" id="Form_Search" value=""
+                                           placeholder="Search for your best result in our community" role="searchbox"
+                                           class="b-InputBox" autocomplete="off"/>
                                     <input type="submit" id="Form_Go" class="small-Button" value="GO"/>
                                 </form>
                             </div>
