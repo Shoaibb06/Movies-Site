@@ -32,6 +32,7 @@ class User(User):
 
 class Rating(models.Model):
     rating = models.IntegerField()
+    from django.contrib.auth.models import User
     user = models.ForeignKey(User,  on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 

@@ -54,3 +54,68 @@
     margin-top: 10px
 }
 
+.rating_sec {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+}
+
+.rating_sec label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+.rating_sec label:last-child {
+    position: static;
+}
+
+.rating_sec label:nth-child(1) {
+    z-index: 5;
+}
+
+.rating_sec label:nth-child(2) {
+    z-index: 4;
+}
+
+.rating_sec label:nth-child(3) {
+    z-index: 3;
+}
+
+.rating_sec label:nth-child(4) {
+    z-index: 2;
+}
+
+.rating_sec label:nth-child(5) {
+    z-index: 1;
+}
+
+.rating_sec label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.rating_sec label .icon {
+    float: left;
+    color: transparent;
+}
+
+.rating_sec label:last-child .icon {
+    color: #000;
+}
+
+.rating_sec:not(:hover) label input:checked ~ .icon,
+.rating_sec:hover label:hover input ~ .icon {
+    color: #09f;
+}
+
+.rating_sec label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #09f;
+}

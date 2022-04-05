@@ -28,4 +28,6 @@ urlpatterns = [
     path('success/', views.success_view, name='success'),
     path('cancel/', views.CancelView.as_view(), name='cancel'),
     path('create_checkout_session/', views.CreateCheckoutSessionView.as_view(), name='create_checkout_session'),
+
+    path('submit-rating/', views.submit_rating, name='submit_rating'),
 ]

@@ -1,5 +1,6 @@
 import stripe
 from django.conf import settings
+from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -157,9 +158,52 @@ def movie_list(request, genre):
 def movie_details(request, movie_id):
     movie = Movie.objects.filter(pk=movie_id)
     genres = []
+    try:
+        rating = Rating.objects.filter(user=request.user, movie=movie[0]).last().rating
+    except Exception:
+        rating = None
+    try:
+        movie_rating = Rating.objects.filter(movie=movie[0]).aggregate(Sum('rating'))['rating__sum']
+        movie_rating_count = Rating.objects.filter(movie=movie[0]).count()
+        movie_rating = round(movie_rating / movie_rating_count, 2)
+        rating_one = round(Rating.objects.filter(movie=movie[0], rating=1).count() / movie_rating_count * 100, 2)
+        rating_two = round(Rating.objects.filter(movie=movie[0], rating=2).count() / movie_rating_count * 100, 2)
+        rating_three = round(Rating.objects.filter(movie=movie[0], rating=3).count() / movie_rating_count * 100, 2)
+        rating_four = round(Rating.objects.filter(movie=movie[0], rating=4).count() / movie_rating_count * 100, 2)
+        rating_five = round(Rating.objects.filter(movie=movie[0], rating=5).count() / movie_rating_count * 100, 2)
+    except Exception:
+        movie_rating = 0
+        movie_rating_count = 0
+        rating_one = 0
+        rating_two = 0
+        rating_three = 0
+        rating_four = 0
+        rating_five = 0
     for genre in movie[0].genres:
         genres.append(genre['name'])
     if movie:
-        return render(request, 'movie_details.html', {'movie': movie[0], 'genres': genres})
+        return render(request, 'movie_details.html',
+                      {'movie': movie[0], 'genres': genres, 'rating': rating, 'movie_rating': movie_rating,
+                       'movie_rating_count': movie_rating_count, 'rating_one': rating_one, 'rating_two': rating_two,
+                       'rating_three': rating_three, 'rating_four': rating_four, 'rating_five': rating_five, })
     else:
         return render(request, '404_page.html')
+
+
+@csrf_exempt
+def submit_rating(request):
+    try:
+        rating_obj = Rating()
+        rating_obj.user_id = request.user.id
+        rating_obj.movie_id = int(request.POST.get('movie_id'))
+        rating_obj.rating = int(request.POST.get('rating'))
+        rating_obj.save()
+    except Exception:
+        error = True
+    else:
+        error = False
+    print(error)
+    data = {
+        'error': error,
+    }
+    return JsonResponse(data)
