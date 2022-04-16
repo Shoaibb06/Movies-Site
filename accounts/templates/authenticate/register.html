@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="col-md-6 mb-4 mx-auto ">
+            <h1> Register Here! </h1>
+            <br/>
+            {% if form.errors %}
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form enctype="multipart/form-data" action="{% url 'register' %}" method="post" class="form-control form group">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <div class="row mx-auto w-25">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

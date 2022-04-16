@@ -29,13 +29,13 @@
                         <div class="rating-progress-bars p-3">
                             <div class="progress-1 align-items-center">
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ rating_one }}%;"
-                                         aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"> {{ rating_one }}%
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ rating_five }}%;"
+                                         aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"> {{ rating_five }}%
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-custom" role="progressbar" style="width: {{ rating_two }}%;"
-                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ rating_two }}%
+                                    <div class="progress-bar bg-custom" role="progressbar" style="width: {{ rating_four }}%;"
+                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ rating_four }}%
                                     </div>
                                 </div>
                                 <div class="progress">
@@ -44,13 +44,13 @@
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ rating_four }}%;"
-                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ rating_four }}%
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ rating_two }}%;"
+                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ rating_two }}%
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ rating_five }}%;"
-                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ rating_five }}%
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ rating_one }}%;"
+                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ rating_one }}%
                                     </div>
                                 </div>
                             </div>
@@ -59,11 +59,7 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div style="margin-left: 10px">
-            </div>
-        </div>
-        <div>
+            <div>
             <div class="rating_sec">
                 <label>
                     <input onclick="rating_change(1)" type="radio" name="stars" value="1"
@@ -102,18 +98,37 @@
                 </label>
             </div>
         </div>
-        <div>
-            <article>
-                <h4 class="mx-2">Please comment: </h4>
-                <div class="row mx-2">
-                    <textarea rows="3"></textarea>
-                </div>
-                <span> </span>
-                <button class="btn btn-primary m-2" type="submit">comment</button>
 
-            </article>
+        <div class="row d-flex my-3 mx-3 justify-content-center">
+            {% if movie.review_set.all %}
+                {% for review in movie.review_set.all %}
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="user d-flex flex-row align-items-center">
+                                {% if review.user.profile_picture %}
+                                    <img src="{{  review.user.profile_picture.url }}" width="30" class="user-img rounded-circle mr-2">
+                                {% endif %}
+                                <h5 class="font-weight-bold text-primary ms-2">{{ review.user.first_name }}</h5>
+                                <div class="ms-2">{{ review.description }}</div>
+                            </div>
+                            <small>{{ review.review_date }}</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
-        <hr>
+
+        <div class="row my-5">
+            <form action="{% url 'add_review' %}" method="post" class="form-group">
+                {% csrf_token %}
+                <input type="hidden" name="movie_id" value="{{  movie.id }}"/>
+                <div class="mb-3">
+                                <textarea class="form-control p-0" name="review" type="text" id="Form_Search" placeholder="Give your thoughts about the movie here">
+                                </textarea>
+                </div>
+                <input type="submit" id="review" class="btn btn-primary m-0" value="Comment"/>
+            </form>
+        </div>
     </div>
 
     <script type="text/javascript">

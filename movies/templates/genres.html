@@ -10,7 +10,7 @@
             {% for genre in genres %}
                 <div class="col-md-4 my-2">
                     <a href="{% url 'movie_list' genre=genre %}">
-                        <img class="pri_image" title="{{ genre }} %}" alt="{{ genre }}" src="{% static 'images/'%}{{  genre|cut:" "|lower }}.jpg">
+                        <img class="pri_image" title="{{ genre }}" alt="{{ genre }}" src="{% static 'images/'%}{{  genre|cut:" "|lower }}.jpg">
                     </a>
                 </div>
             {% endfor %}

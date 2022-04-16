@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Playlist{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="movies">
+            <div class="row">
+                {% for movie in movies %}
+                    <div class="col-md-3 mt-2">
+                        <a class="text-decoration-none text-dark link-hover" href="{% url 'movie_details' movie_id=movie.id %}">
+                            <div class="card">
+                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{movie.poster_url}}" class="card-img-top" alt="...">
+                                <div class="card-body large-height">
+                                    <h5 class="card-title small text-center py-1">{{movie.title}}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center my-5">
+
+                {% if movies.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ movies.previous_page_number }}">Previous</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="javscript;;">Previous</a></li>
+                {% endif %}
+
+                {#                <li class="page-item disabled"><a class="page-link" href="javscript;;">Page {{ movies.number  }} of {{ movies.paginator.num_pages }}</a></li>#}
+                {#                #}
+                {% for page in nums %}
+                    {% if movies.number != page %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% else %}
+                        <li class="page-item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if movies.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ movies.next_page_number }}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ movies.paginator.num_pages }}">Last &raquo;</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </div>
+
+{% endblock %}

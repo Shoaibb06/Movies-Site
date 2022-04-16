@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit profile{% endblock %}
+
+{% block content %}
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <h5>Coins: {{ current_user.coins }}</h5>
+            <div class="row justify-content-end">
+                <div class="col-md-2 mb-2">
+                    <button class="btn btn-primary float-end" type="button"
+                            id="checkout-button">Subscribe
+                    </button>
+                    {% csrf_token %}
+                    {% include 'stripe/stripe_script.html' %}
+                </div>
+                <div class="col-md-2">
+                    <a href="{% url 'change_password' %}" class="btn btn-primary float-end" type="button"
+                       id="checkout-button">Change Password
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="{{ current_user.profile_picture.url}}" style="height: 200px; width: 200px;"><span class="font-weight-bold">{{ current_user.first_name }}</span><span class="text-black-50">{{ current_user.email }}</span><span> </span></div>
+            </div>
+            <div class="col-md-9">
+                <div class="mb-4 mx-auto ">
+                    {% if form.errors %}
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <form enctype="multipart/form-data" action="{% url 'edit_user' user_id=user.id %}" method="post" class="form-control form group">
+                        {% csrf_token %}
+                        {{ form.as_p}}
+                        <div class="row mx-auto w-25">
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

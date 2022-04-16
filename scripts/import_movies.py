@@ -5,7 +5,7 @@ from datetime import datetime
 from movies.models import *
 
 base_url = 'https://api.themoviedb.org/3/'
-api_key = '239cdc88309cbc455cf646b973534e4b'
+#api_key = #Tmdb Api key
 
 
 def run():

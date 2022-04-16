@@ -124,6 +124,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'movies/static'),
+    os.path.join(BASE_DIR, 'accounts/static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -137,10 +138,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
-# STRIPE_PUBLIC_KEY = "pk_test_51KkwumFJS7GZiaLYmMILpESwndzwgcLA9dNuPhcGFubS5PwRg9oZAsF8zEvCujm2QIly8D682kbjEuzvx3SGz9tb00nZsL6yHy"
-# STRIPE_SECRET_KEY = "sk_test_51KkwumFJS7GZiaLYveVUURgx4U0CPWFTMwJJ3MvGbbNoLONDrSzAu8jol3kbRc5EU8nrk541Qu1ogCqWVl9hYoBx00dvzL8YCR"
-# STRIPE_WEBHOOK_SECRET = ""
 
-STRIPE_SECRET_KEY = 'sk_test_51JMQxLEKaFNIZH766T9xAyKWKmJ6TqhFBYzS1op5SzfhYIq2NRF44pzqihHD6HTncJ0oa5jN1Kx6LGH92dGq8F0900Uk0rYsUj'
-STRIPE_PUBLIC_KEY = 'pk_test_51JMQxLEKaFNIZH76M2PaNX6bpxyJk1RCr38VrJiFbVDJjB2A38GpyyFHw660hP7oDJ6MHqXlJ45rtog8y1c2Uo2a005AUCwnN2'
-STRIPE_WEBHOOK_SECRET = 'whsec_12500cb4bc7c98e5aef08cae64c0083b721b1272b2bdb81c70ecf10e779f45ea'
+# STRIPE_SECRET_KEY =
+# STRIPE_PUBLIC_KEY =
+# STRIPE_WEBHOOK_SECRET =
+
+LOGIN_URL = 'login'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''

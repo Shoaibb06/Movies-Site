@@ -15,32 +15,51 @@
                         <a class="nav-link" href="{% url 'genres' %}">Genres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <div class="dropdown margin-top">
+                            <a class="text-decoration-none text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Movies
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'by_rating' %}">Top 10</a></li>
+                                <li><a class="dropdown-item" href="{% url 'old_movies' %}">Old Movies</a></li>
+                                <li><a class="dropdown-item" href="{% url 'most_recent' %}">Most Recent</a></li>
+                            </ul>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" type="button"
-                                id="checkout-button">Subscribe
-                        </button>
-                        {% csrf_token %}
-                        {% include 'stripe/stripe_script.html' %}
-                    </li>
+
                     {% if not page %}
-                        <li class="nav-item ms-2">
+                        <li class="nav-item ms-5">
                             <div class="bbootstrap mt-3">
-                                <form class="w-100">
+                                <form action="{% url 'search' %}" method="get" class="w-100">
+                                    {% csrf_token %}
                                     <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                    <input type="text" id="Form_Search" value=""
-                                           placeholder="Search for your best result in our community" role="searchbox"
-                                           class="b-InputBox" autocomplete="off"/>
+                                    <input name="s_query" type="text" id="Form_Search" value="" placeholder="Search here" role="searchbox" class="b-InputBox" autocomplete="off"/>
                                     <input type="submit" id="Form_Go" class="small-Button" value="GO"/>
                                 </form>
                             </div>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <div class="dropdown margin-top">
+                                <a class="text-decoration-none text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ user.first_name }}
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'edit_user' user_id=user.id%}">My profile</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'show_playlist' %}">My Playlist</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -48,58 +67,13 @@
         </nav>
         {% if page %}
             <div class="bbbootstrap">
-                <form>
+                <form action="{% url 'search' %}" method="get" >
+                    {% csrf_token %}
                     <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                    <input type="text" id="Form_Search" value="" placeholder="Search for your best result in our community" role="searchbox" class="InputBox " autocomplete="off"/>
+                    <input name="s_query" type="text" id="Form_Search" value="" placeholder="Search for your best result in our community" role="searchbox" class="InputBox " autocomplete="off"/>
                     <input type="submit" id="Form_Go" class="Button" value="GO"/>
                 </form>
             </div>
         {% endif %}
     </div>
 </header>
-
-
-{#<nav class="navbar navbar-expand-lg navbar-dark bg-dark">#}
-{#  <div class="container-fluid">#}
-{#    <a class="navbar-brand" href="{% url 'index' %}">IMDB</a>#}
-{#    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
-{#      <span class="navbar-toggler-icon"></span>#}
-{#    </button>#}
-{##}
-{#    <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
-{#      <ul class="navbar-nav me-auto mb-2 mb-lg-0">#}
-{#        <li class="nav-item">#}
-{#          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Option 1</a>#}
-{#        </li>#}
-{##}
-{#        <li class="nav-item">#}
-{#          <a class="nav-link" href="#">Option 2</a>#}
-{#        </li>#}
-{#        <li class="nav-item">#}
-{##}
-{#          <form class="d-flex">#}
-{#            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
-{#            <button class="btn btn-outline-success" type="submit">Search</button>#}
-{#          </form>#}
-{##}
-{#        </li>#}
-{##}
-{#        {% if not user.is_authenticated %}#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link " href="{% url 'login' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
-{#                    Login#}
-{#                </a>#}
-{#            </li>#}
-{#        {% else %}#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link" href="{% url 'logout' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
-{#                    Logout#}
-{#                </a>#}
-{#            </li>#}
-{#        {% endif %}#}
-{#      </ul>#}
-{#    </div>#}
-{#  </div>#}
-{#</nav>#}
-
-

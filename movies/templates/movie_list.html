@@ -1,19 +1,10 @@
 
-{#    <iframe width="720" height="845" src="https://www.youtube.com/embed/5PSNL1qE6VY">#}
-{#</iframe>#}
-{#    <div class="bbbootstrap">#}
-{#        <form>#}
-{#            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>#}
-{#            <input type="text" id="Form_Search" value="" placeholder="Search for your best result in our community" role="searchbox" class="InputBox " autocomplete="off"/>#}
-{#            <input type="submit" id="Form_Go" class="Button" value="GO"/>#}
-{#        </form>#}
-{#    </div>#}
 <div class="container">
     <div class="movies">
         <div class="row">
             {% for movie in movies %}
                 <div class="col-md-3 mt-2">
-                    <a class="text-decoration-none text-dark link-hover" href="{% url 'movie_details' movie_id=movie.id %}">
+                    <a class="text-decoration-none text-dark link-hover" href="{% url 'movie_overview' movie_id=movie.id %}">
                         <div class="card">
                             <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{movie.poster_url}}" class="card-img-top" alt="...">
                             <div class="card-body large-height">
