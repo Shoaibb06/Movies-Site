@@ -136,7 +136,6 @@ def genres(request):
             else:
                 genres.append(genre['name'])
 
-
     genres = list(set(genres))
     genres.sort()
     return render(request, 'genres.html', {'genres': genres})
@@ -307,6 +306,7 @@ def movie_overview(request, movie_id):
         return render(request, 'movie_overview.html', {'movie': movie, 'genres': genres})
     else:
         return render(request, '404_page.html')
+
 
 @login_required
 def add_to_playlist(request, movie_id):

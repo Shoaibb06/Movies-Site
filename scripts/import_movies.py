@@ -3,9 +3,10 @@ import json
 import requests
 from datetime import datetime
 from movies.models import *
+from movies_site import settings
 
 base_url = 'https://api.themoviedb.org/3/'
-#api_key = #Tmdb Api key
+api_key = settings.API_KEY
 
 
 def run():

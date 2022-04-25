@@ -22,7 +22,13 @@
             </div>
 
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="{{ current_user.profile_picture.url}}" style="height: 200px; width: 200px;"><span class="font-weight-bold">{{ current_user.first_name }}</span><span class="text-black-50">{{ current_user.email }}</span><span> </span></div>
+                {% if current_user.profile_picture %}
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
+                            class="rounded-circle mt-5" src="{{ current_user.profile_picture.url }}"
+                            style="height: 200px; width: 200px;"><span
+                            class="font-weight-bold">{{ current_user.first_name }}</span><span
+                            class="text-black-50">{{ current_user.email }}</span><span> </span></div>
+                {% endif %}
             </div>
             <div class="col-md-9">
                 <div class="mb-4 mx-auto ">
@@ -38,9 +44,10 @@
                         </ul>
                     {% endif %}
 
-                    <form enctype="multipart/form-data" action="{% url 'edit_user' user_id=user.id %}" method="post" class="form-control form group">
+                    <form enctype="multipart/form-data" action="{% url 'edit_user' user_id=user.id %}" method="post"
+                          class="form-control form group">
                         {% csrf_token %}
-                        {{ form.as_p}}
+                        {{ form.as_p }}
                         <div class="row mx-auto w-25">
                             <input type="submit" value="Submit" class="btn btn-primary">
                         </div>
